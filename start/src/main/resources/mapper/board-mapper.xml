@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.start.board.model.dao.BoardMapper">
+	
+	<sql id="boardColumn">
+		SELECT
+		       BOARD_NO boardNo
+		     , BOARD_TITLE boardTitle
+		     , BOARD_WRITER boardWriter
+		     , CREATE_DATE createDate
+	</sql>
+	
+	<insert id="save"
+			parameterType="BoardVO">
+		INSERT
+		  INTO
+		       BOOT_BOARD
+		VALUES
+		       (
+			   SEQ_BBN.NEXTVAL
+			 , #{boardTitle}
+			 , #{boardContent}
+			 , #{boardWriter}
+			 , #{fileUrl}
+			 , DEFAULT
+			 , DEFAULT
+			   )
+	</insert>
+	
+	<select id="findAll"
+			resultType="BoardDTO">
+		<include refid="boardColumn" />
+		  FROM
+		       BOOT_BOARD
+		 WHERE
+		       STATUS = 'Y'
+		 ORDER
+		    BY
+		       BOARD_NO DESC
+	</select>
+	
+	<select id="findByBoardNo"
+			resultType="BoardDTO"
+			parameterType="long">
+		<include refid="boardColumn" />
+		     , BOARD_CONTENT boardContent
+		     , FILE_URL fileUrl
+		  FROM
+		       BOOT_BOARD
+		 WHERE
+		       STATUS = 'Y'
+		   AND
+		       BOARD_NO = #{boardNo}
+	</select>
+	
+	<update id="update"
+			parameterType="BoardDTO">
+		UPDATE
+		       BOOT_BOARD
+		   SET
+		       BOARD_TITLE = #{boardTitle}
+		     , BOARD_CONTENT = #{boardContent}
+		     , FILE_URL = #{fileUrl}
+		 WHERE
+			   BOARD_NO = #{boardNo}
+		   AND
+		       STATUS = 'Y'
+	</update>
+	
+	
+	<update id="deleteByBoardNo">
+		UPDATE
+		       BOOT_BOARD
+		   SET
+		       STATUS = 'N'
+		 WHERE
+		       BOARD_NO = #{boardNo}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>

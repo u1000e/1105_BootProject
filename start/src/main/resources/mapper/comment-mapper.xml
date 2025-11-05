@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.start.comment.model.dao.CommentMapper">
+	
+	
+	<insert id="save" parameterType="CommentVO">
+		INSERT
+		  INTO
+		       BOOT_COMMENT
+		       (
+		       COMMENT_CONTENT
+		     , COMMENT_WRITER
+		     , REF_BOARD_NO
+		       )
+		VALUES
+		       (
+		       #{commentContent}
+		     , #{commentWriter}
+		     , #{refBoardNo}
+			   )
+	</insert>
+	
+	<select id="findAll"
+			parameterType="long"
+			resultType="CommentDTO">
+		SELECT
+		       COMMENT_NO commentNo
+		     , COMMENT_WRITER commentWriter
+		     , COMMENT_CONTENT commentContent
+		     , CREATE_DATE createDate
+		     , REF_BOARD_NO refBoardNo
+		  FROM
+		       BOOT_COMMENT
+		 WHERE
+		       COMMENT_STATUS = 'Y'
+		   AND
+		       REF_BOARD_NO = #{boardNo}
+		 ORDER
+		    BY
+		       commentNo DESC
+	</select>
+	
+	
+	
+</mapper>
