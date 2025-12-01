@@ -4,7 +4,7 @@
 
 ![메인 화면](./images/main.png)
 
-##  프로젝트 소개
+## 프로젝트 소개
 
 이 프로젝트는 **수업용 코드**로, 수강생들의 학습 지원이 목적입니다.
 Security FilterChain, JWT 인증, REST API를 통한 CRUD를 구현했습니다.
@@ -53,7 +53,7 @@ Security FilterChain, JWT 인증, REST API를 통한 CRUD를 구현했습니다.
 
 ---
 
-## 📂 프로젝트 구조
+## 프로젝트 구조
 
 ### Backend (Spring Boot)
 src/main/java/com/example/project/
