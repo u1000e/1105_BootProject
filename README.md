@@ -35,7 +35,7 @@ Security FilterChain, JWT 인증, REST API를 통한 CRUD를 구현했습니다.
 
 ---
 
-## 🛠 기술 스택
+## 기술 스택
 
 ### Frontend
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
